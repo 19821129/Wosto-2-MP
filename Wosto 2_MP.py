@@ -4,12 +4,14 @@ Created on Thu Feb 10 21:14:32 2022
 @author: fangg
 """
 from decimal import *
+from os import *
 
 supmap = str.maketrans('1234567890', '¹²³⁴⁵⁶⁷⁸⁹⁰')
-def sure():
+def sure(do='pass'):
     while True:
         bool = input('sure?(y/n)')
         if bool == 'y':
+            exec(do)
             return True
         elif bool == 'n':
             return False
@@ -98,6 +100,14 @@ while True:
                 print(readata)
         except FileNotFoundError:
             print(f'\33[31mError: Can\'t find "{readfile}"\33[0m')
+        except:
+            print('\33[31mError: Unable to recognize the inputs\33[0m')
+    elif 'rm' in inputs:
+        try:
+            rmdata = inputs[1]
+            sure("remove(rmdata)")
+        except FileNotFoundError:
+            print(f'\33[31mError: Can\'t find "{rmdata}"')
         except:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
 
