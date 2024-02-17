@@ -8,6 +8,7 @@ from os import *
 from shutil import *
 
 supmap = str.maketrans('1234567890', '¹²³⁴⁵⁶⁷⁸⁹⁰')
+chdir("C:\\Windows\\System32")
 def sure(do='pass'):
     while True:
         bool = input('sure?(y/n)')
@@ -20,7 +21,7 @@ def sure(do='pass'):
             print('\33[31mError: Unable to recognize the inputs\33[0m')
 
 while True:
-    inputstr = input("|- Wosto 2 MP -| >>> ")
+    inputstr = input(f"WostoMP # {getcwd()} $ ")
     inputstr = inputstr.lower()
     inputstr = inputstr.strip()
     inputs = inputstr.split(' ')
@@ -175,3 +176,11 @@ while True:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
         else:
             print('Successfully executed.')
+    elif 'cd' == inputs[0]:
+        try:
+            cdata = inputs[1]
+            chdir(cdata)
+        except FileNotFoundError:
+            print(f'\33[31mError: Can\'t find "{cdata}"')
+        except:
+            print('\33[31mError: Unable to recognize the inputs\33[0m')
