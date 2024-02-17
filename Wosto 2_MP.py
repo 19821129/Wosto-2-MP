@@ -67,6 +67,17 @@ while True:
                     print('\33[31mError: Divisor cannot be 0\33[0m')
                 except:
                     print('\33[31mError: Unable to recognize the number entered\33[0m')
+            if 'power' or 'square' in exprinput:
+                try:
+                    supmap = str.maketrans('1234567890', '¹²³⁴⁵⁶⁷⁸⁹⁰')
+                    if 'power' in exprinput:
+                        poweresult = Decimal(exprinput[1]) ** Decimal(exprinput[2])
+                        print(exprinput[1] + exprinput[2].translate(supmap), '=', poweresult)
+                    else:
+                        poweresult = Decimal(exprinput[1]) ** 2
+                        print(exprinput[1] + '²', '=', poweresult)
+                except:
+                    print('\33[31mError: Unable to recognize the number entered\33[0m')
 
             if 'back' in exprinput or 'escape' in exprinput:
                 break
