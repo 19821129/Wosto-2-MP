@@ -6,9 +6,11 @@ Created on Thu Feb 10 21:14:32 2022
 from decimal import *
 from os import *
 from shutil import *
+from psutil import *
+from subprocess import *
 
 supmap = str.maketrans('1234567890', '¹²³⁴⁵⁶⁷⁸⁹⁰')
-chdir("C:\\Windows\\System32")
+chdir("C:")
 def sure(do='pass'):
     while True:
         bool = input('sure?(y/n)')
@@ -139,7 +141,7 @@ while True:
             print("\33[34m" + ls[list] + "\33[0m")
     elif 'pwd' in inputs:
         print("\33[34m" + getcwd() + "\33[0m")
-    elif 'cp' == inputs[0]:
+    elif 'cp' in inputs:
         # 提醒：复制到的地点需要是目录或是文件，如是文件，被复制到的文件将会被替换为原文件。
         # 如果想复制到指定目录中，可以使用/分隔目录，比如path/one/dir,path/one/file.txt等。
         try:
@@ -152,7 +154,7 @@ while True:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
         else:
             print('Successfully executed.')
-    elif 'move' == inputs[0]:
+    elif 'move' in inputs:
         # 提醒：移动到的地点需要是目录，如目标位置不存在，原文件将会被重命名为目标位置。
         # 如果您想复制到指定目录中，可以使用/分隔目录，比如path/one/dir,path/one/file.txt等。
         try:
@@ -165,7 +167,7 @@ while True:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
         else:
             print('Successfully executed.')
-    elif 'rename' == inputs[0]:
+    elif 'rename' in inputs:
         try:
             renamedata = inputs[1]
             newname = inputs[2]
@@ -176,7 +178,7 @@ while True:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
         else:
             print('Successfully executed.')
-    elif 'cd' == inputs[0]:
+    elif 'cd' in inputs:
         try:
             cdata = inputs[1]
             chdir(cdata)
@@ -184,3 +186,38 @@ while True:
             print(f'\33[31mError: Can\'t find "{cdata}"')
         except:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
+    elif 'cls' in inputs or 'clear' in inputs:
+        call("cls", shell=True)
+    elif 'top' in inputs or 'tasklist' in inputs:
+        processes = process_iter()
+        print('________Name________\33[34m|\33[0m_PID_\33[34m|\33[0mMemory Usage\33[34m|\33')
+        for process in processes:
+            if len(process.name()) > 20:
+                print(process.name()[:17] + "...\33[34m|\33[0m", end='')
+                print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + '\33[34m|\33[0m', end='')
+                print(str(round(process.memory_percent(), 2)) + (
+                            10 - len(str(round(process.memory_percent(), 2)))) * ' ' + ' %\33[34m|\33[0m')
+            else:
+                print(process.name() + (20 - len(process.name())) * ' ' + "\33[34m|\33[0m", end='')
+                print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + '\33[34m|\33[0m', end='')
+                print(str(round(process.memory_percent(), 2)) +
+                      (10 - len(str(round(process.memory_percent(), 2)))) * ' ' + ' %\33[34m|\33[0m')
+    elif 'taskkill' in inputs:
+        try:
+            if '/pid' in inputs:
+                hasp = 2
+            else:
+                hasp = 1
+            processes = process_iter()
+            for process in processes:
+                if hasp == 2 and process.pid == inputs[hasp]:
+                    sure('system("taskkill /f /pid " + str(process.pid) + " /t")')
+                if process.name() == inputs[hasp]:
+                    sure('system("taskkill /f /im " + process.name() + " /t")')
+        except:
+            print('\33[31mError: Unable to recognize the inputs\33[0m')
+
+
+
+
+
