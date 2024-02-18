@@ -8,6 +8,7 @@ from os import *
 from shutil import *
 from psutil import *
 from subprocess import *
+from sys import *
 
 supmap = str.maketrans('1234567890', '¹²³⁴⁵⁶⁷⁸⁹⁰')
 chdir("C:")
@@ -216,6 +217,17 @@ while True:
                     sure('system("taskkill /f /im " + process.name() + " /t")')
         except:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
+    elif 'md' in inputs or 'mkdir' in inputs:
+        try:
+            dirname = inputs[1]
+            mkdir(dirname)
+        except FileExistsError:
+            print("\33[31mError: Directory already exists\33[0m")
+        except:
+            print("\33[31mError: Unable to recognize the inputs\33[0m")
+    elif 'exit' in inputs or 'quit' in inputs:
+        exit(0)
+
 
 
 
