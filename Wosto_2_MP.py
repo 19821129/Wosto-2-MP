@@ -9,6 +9,7 @@ from shutil import *
 from psutil import *
 from subprocess import *
 from sys import *
+from yaml import *
 
 supmap = str.maketrans('1234567890', '¹²³⁴⁵⁶⁷⁸⁹⁰')
 chdir("C:")
@@ -184,7 +185,7 @@ while True:
             cdata = inputs[1]
             chdir(cdata)
         except FileNotFoundError:
-            print(f'\33[31mError: Can\'t find "{cdata}"')
+            print(f'\33[31mError: Can\'t find "{cdata}"\33[0m')
         except:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
     elif 'cls' in inputs or 'clear' in inputs:
@@ -227,6 +228,13 @@ while True:
             print("\33[31mError: Unable to recognize the inputs\33[0m")
     elif 'exit' in inputs or 'quit' in inputs:
         exit(0)
+    elif 'echo' in inputs:
+        try:
+            print(inputs[1])
+        except:
+            print("\33[31mError: Unable to recognize the inputs\33[0m")
+    else:
+        print(f'\33[31m"{inputs[0]}" is neither a command.\33[0m')
 
 
 
