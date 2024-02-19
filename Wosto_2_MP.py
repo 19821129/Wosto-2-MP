@@ -4,15 +4,12 @@ Created on Thu Feb 10 21:14:32 2022
 @author: fangg
 """
 from decimal import *
-from os import *
 from shutil import *
 from psutil import *
-from subprocess import *
 from sys import *
-from yaml import *
+import os
 
 supmap = str.maketrans('1234567890', '¹²³⁴⁵⁶⁷⁸⁹⁰')
-chdir("C:")
 def sure(do='pass'):
     while True:
         bool = input('sure?(y/n)')
@@ -25,7 +22,7 @@ def sure(do='pass'):
             print('\33[31mError: Unable to recognize the inputs\33[0m')
 
 while True:
-    inputstr = input(f"WostoMP # {getcwd()} $ ")
+    inputstr = input(f"WostoMP # {os.getcwd()} $ ")
     inputstr = inputstr.lower()
     inputstr = inputstr.strip()
     inputs = inputstr.split(' ')
@@ -134,15 +131,15 @@ while True:
                 hasp = 2
             else:
                 hasp = 1
-            ls = listdir(inputs[hasp])
+            ls = os.listdir(inputs[hasp])
         except:
-            ls = listdir(getcwd())
+            ls = os.listdir(os.getcwd())
         for list in range(len(ls)):
             if ls[list][0] == '.' and hasp == 1:
                 continue
             print("\33[34m" + ls[list] + "\33[0m")
     elif 'pwd' in inputs:
-        print("\33[34m" + getcwd() + "\33[0m")
+        print("\33[34m" + os.getcwd() + "\33[0m")
     elif 'cp' in inputs:
         # 提醒：复制到的地点需要是目录或是文件，如是文件，被复制到的文件将会被替换为原文件。
         # 如果想复制到指定目录中，可以使用/分隔目录，比如path/one/dir,path/one/file.txt等。
@@ -173,23 +170,21 @@ while True:
         try:
             renamedata = inputs[1]
             newname = inputs[2]
-            rename(renamedata, newname)
+            os.rename(renamedata, newname)
         except FileNotFoundError:
             print(f'\33[31mError: Can\'t find "{renamedata}"')
         except:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
         else:
             print('Successfully executed.')
-    elif 'cd' in inputs:
+    elif 'cd' in inputs or 'chdir' in inputs:
         try:
             cdata = inputs[1]
-            chdir(cdata)
+            os.chdir(cdata)
         except FileNotFoundError:
             print(f'\33[31mError: Can\'t find "{cdata}"\33[0m')
         except:
             print('\33[31mError: Unable to recognize the inputs\33[0m')
-    elif 'cls' in inputs or 'clear' in inputs:
-        call("cls", shell=True)
     elif 'top' in inputs or 'tasklist' in inputs:
         processes = process_iter()
         print('________Name________\33[34m|\33[0m_PID_\33[34m|\33[0mMemory Usage\33[34m|\33')
@@ -221,7 +216,7 @@ while True:
     elif 'md' in inputs or 'mkdir' in inputs:
         try:
             dirname = inputs[1]
-            mkdir(dirname)
+            os.mkdir(dirname)
         except FileExistsError:
             print("\33[31mError: Directory already exists\33[0m")
         except:
@@ -233,11 +228,26 @@ while True:
             print(inputs[1])
         except:
             print("\33[31mError: Unable to recognize the inputs\33[0m")
+    elif 'help' in inputs:
+        if "-en" in inputs:
+            with open("help/help.dat", 'r') as help_en:
+                data = help_en.read()
+            print(data)
+        elif "-zh" in inputs:
+            with open("help/help-zh.dat", 'r', encoding="utf-8") as help_zh:
+                data = help_zh.read()
+            print(data)
+        elif "-fr" in inputs:
+            with open("help/help-fr.dat", 'r') as help_fr:
+                data = help_fr.read()
+            print(data)
+        elif "-jp" in inputs:
+            with open("help/help-jp.dat", 'r', encoding="utf-8") as help_jp:
+                data = help_jp.read()
+            print(data)
+        else:
+            with open("help/help.dat", 'r') as help_en:
+                data = help_en.read()
+            print(data)
     else:
         print(f'\33[31m"{inputs[0]}" is neither a command.\33[0m')
-
-
-
-
-
-

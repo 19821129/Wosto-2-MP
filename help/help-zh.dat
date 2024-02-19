@@ -1,0 +1,19 @@
+cd [path]               更改工作目录
+chdir [path]            更改工作目录
+cp [file] [path]        复制文件
+echo [messages]         显示消息
+exit                    离开 Wosto 2 MP
+expr                    数学计算
+ls -a [dir?]            列出文件列表
+md [name]               建造文件夹
+mkdir [name]            建造文件夹
+move [file] [path]      移动文件
+pwd                     显示工作目录
+quit                    离开 Wosto 2 MP
+rename [name1] [name2]  重命名文件
+rm [file]               删除文件
+rmdir [direction]       删除文件夹
+taskkill /pid [task]    杀死进程
+tasklist                显示当前进程
+top                     显示当前进程
+type [file]             打开文本文件（.txt）或其他什么东西

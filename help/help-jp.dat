@@ -1,0 +1,19 @@
+cd [path]               作業ディレクトリの変更
+chdir [path]            作業ディレクトリの変更
+cp [file] [path]        ファイルのコピー
+echo [messages]         メッセージを表示
+exit                    Wosto 2 MPから離れる
+expr                    数学的計算
+ls -a [dir?]            ファイルのリスト
+md [name]               フォルダを生成
+mkdir [name]            フォルダを生成
+move [file] [path]      ファイルの移動
+pwd                     作業ディレクトリの表示
+quit                    Wosto 2 MPから離れる
+rename [name1] [name2]  ファイル名の変更
+rm [file]               ファイルを削除
+rmdir [direction]       フォルダを削除
+taskkill /pid [task]    いどあつこうてい
+tasklist                現在のプロセスを表示
+top                     現在のプロセスを表示
+type [file]             テキストファイル(.txt)またはその他のファイルを開く

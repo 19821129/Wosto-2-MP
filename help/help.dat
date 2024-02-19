@@ -1,0 +1,19 @@
+cd [path]               Change working directory
+chdir [path]            Change working directory
+cp [file] [path]        Copy file
+echo [messages]         Displays messages
+exit                    Leaves Wosto 2 MP
+expr                    Mathematical calculation
+ls -a [dir?]            List file list
+mD [name]               Build folder
+mkdir [name]            Build folder
+move [file] [path]      Move a file
+pwd                     Displays the working directory
+quit                    Leaves Wosto 2 MP
+rename [name1] [name2]  Renaming a file
+rm [file]               Delete file
+rmdir [direction]       Delete folder
+taskkill /pid [task]    Kill process
+tasklist                Display current process
+top                     Displays the current process
+type [file]             Open a text file (. txt) or something else

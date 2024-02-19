@@ -1,0 +1,19 @@
+cd [path]               Modifier le Répertoire de travail
+chdir [path]            Modifier le Répertoire de travail
+cp [file] [path]        Copier le fichier
+echo [messages]         Afficher le message
+exit                    Départ du Wosto 2 MP
+expr                    Calcul mathématique
+ls -a [dir?]            Liste des fichiers
+md [name]               Générer un dossier
+mkdir [name]            Générer un dossier
+move [file] [path]      Déplacer des fichiers
+pwd                     Afficher le Répertoire de travail
+quit                    Départ du Wosto 2 MP
+rename [name1] [name2]  Renommer un fichier
+rm [file]               Supprimer un fichier
+rmdir [direction]       Supprimer un dossier
+taskkill /pid [task]    Processus de compression de puits
+tasklist                Afficher le processus actuel
+top                     Afficher le processus actuel
+type [file]             Ouvrir un fichier texte (.txt) ou un autre fichier
