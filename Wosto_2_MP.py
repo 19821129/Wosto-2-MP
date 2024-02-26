@@ -3,205 +3,132 @@
 Created on Thu Feb 10 21:14:32 2022
 @author: fangg
 """
-from decimal import *
+from MP_func.MP_Func import *
+import Expr_APP.Expr as expr
 from shutil import *
 from psutil import *
 from sys import *
 import os
 
-supmap = str.maketrans('1234567890', '¹²³⁴⁵⁶⁷⁸⁹⁰')
-def sure(do='pass'):
-    while True:
-        bool = input('sure?(y/n)')
-        if bool == 'y':
-            exec(do)
-            return True
-        elif bool == 'n':
-            return False
-        else:
-            print('\33[31mError: Unable to recognize the inputs\33[0m')
-
 while True:
     inputstr = input(f"WostoMP # {os.getcwd()} $ ")
     inputstr = inputstr.lower()
     inputstr = inputstr.strip()
-    inputs = inputstr.split(' ')
+    inputs = inputstr.split(' ', 1)
+    command = inputs[0]
+    if len(inputs) != 1:
+        args = tuple(inputs[1].split(' '))
 
-    if 'expr' in inputs:
-        while True:
-            exprinputstr = input("|- expr mode -| >>> ")
-            exprinputstr = exprinputstr.lower()
-            exprinputstr = exprinputstr.strip()
-            exprinput = exprinputstr.split(' ')
-            if 'plus' in exprinput:
-                try:                                                        # 没改好，懒得改
-                    plusresult = Decimal(exprinput[1]) + Decimal(exprinput[2])
-                    print(exprinput[1], '+', exprinput[2], '=', plusresult)
-                except:
-                    print('\33[31mError: Unable to recognize the number entered\33[0m')
-            if 'mine' in exprinput:
-                try:
-                    mineresult = Decimal(exprinput[1]) + Decimal(exprinput[2])
-                    print(exprinput[1], '-', exprinput[2], '=', mineresult)
-                except:
-                    print('\33[31mError: Unable to recognize the number entered\33[0m')
-            if 'multipli' in exprinput:
-                try:
-                    multipliresult = Decimal(exprinput[1]) * Decimal(exprinput[2])
-                    print(exprinput[1], '×', exprinput[2], '=', multipliresult)
-                except:
-                    print('\33[31mError: Unable to recognize the number entered\33[0m')
-            if 'divi' in exprinput:
-                try:
-                    diviresult = Decimal(exprinput[1]) / Decimal(exprinput[2])
-                    print(exprinput[1], '÷', exprinput[2], '=', diviresult)
-                except ZeroDivisionError:
-                    print('\33[31mError: Divisor cannot be 0\33[0m')
-                except:
-                    print('\33[31mError: Unable to recognize the number entered\33[0m')
-            if 'intdivi' in exprinput:
-                try:
-                    intdivi_result = Decimal(exprinput[1]) // Decimal(exprinput[2])
-                    print(exprinput[1], '//', exprinput[2], '=', intdivi_result)
-                except ZeroDivisionError:
-                    print('\33[31mError: Divisor cannot be 0\33[0m')
-                except:
-                    print('\33[31mError: Unable to recognize the number entered\33[0m')
-            if 'remainder' in exprinput:
-                try:
-                    remainder_result = Decimal(exprinput[1]) % Decimal(exprinput[2])
-                    print(exprinput[1], '%', exprinput[2], '=', remainder_result)
-                except ZeroDivisionError:
-                    print('\33[31mError: Divisor cannot be 0\33[0m')
-                except:
-                    print('\33[31mError: Unable to recognize the number entered\33[0m')
-            if 'remainder' in exprinput:
-                try:
-                    remainder_result = Decimal(exprinput[1]) % Decimal(exprinput[2])
-                    print(exprinput[1], '%', exprinput[2], '=', remainder_result)
-                except ZeroDivisionError:
-                    print('\33[31mError: Divisor cannot be 0\33[0m')
-                except:
-                    print('\33[31mError: Unable to recognize the number entered\33[0m')
-            if 'power' or 'square' in exprinput:
-                try:
-                    if 'power' in exprinput:
-                        poweresult = Decimal(exprinput[1]) ** Decimal(exprinput[2])
-                        print(exprinput[1] + exprinput[2].translate(supmap), '=', poweresult)
-                    else:
-                        poweresult = Decimal(exprinput[1]) ** 2
-                        print(exprinput[1] + '²', '=', poweresult)
-                except:
-                    print('\33[31mError: Unable to recognize the number entered\33[0m')
-            if 'back' in exprinput or 'escape' in exprinput:
-                break
-    elif 'type' in inputs:
+    if 'expr' == command or 'math' == command:
+        expr.main()
+    elif 'type' == command:
         try:
-            readfile = inputs[1]
+            readfile = args[0]
             with open(readfile, 'r') as fileread:
                 readata = fileread.read()
                 print(readata)
         except FileNotFoundError:
-            print(f'\33[31mError: Can\'t find "{readfile}"\33[0m')
-        except:
-            print('\33[31mError: Unable to recognize the inputs\33[0m')
-    elif 'rm' in inputs:
+            print(errorText(0, readfile))
+        except Exception:
+            print(errorText(0))
+    elif 'rm' == command:
         try:
-            rmdata = inputs[1]
+            rmdata = args[0]
             sure("remove(rmdata)")
         except FileNotFoundError:
-            print(f'\33[31mError: Can\'t find "{rmdata}"')
-        except:
-            print('\33[31mError: Unable to recognize the inputs\33[0m')
+            print(f'\33[31mError: Can\'t find "{rmdata}"{Style.NORMAL}')
+        except Exception:
+            print(errorText(0))
         else:
             print('Successfully executed.')
-    elif 'rmdir' in inputs:
+    elif 'rmdir' == command:
         try:
-            deldir = inputs[1]
+            deldir = args[0]
             sure('rmtree(deldir)')
         except FileNotFoundError:
             print(f'\33[31mError: Can\'t find "{deldir}"')
-        except:
-            print('\33[31mError: Unable to recognize the inputs\33[0m')
+        except Exception:
+            print(errorText(0))
         else:
             print('Successfully executed.')
-    elif 'ls' in inputs or 'dir' in inputs:
+    elif 'ls' == command or 'dir' == command:
         try:
-            if '-a' in inputs:
+            if '-a' == command:
                 hasp = 2
             else:
                 hasp = 1
             ls = os.listdir(inputs[hasp])
-        except:
+        except Exception:
             ls = os.listdir(os.getcwd())
         for list in range(len(ls)):
             if ls[list][0] == '.' and hasp == 1:
                 continue
-            print("\33[34m" + ls[list] + "\33[0m")
-    elif 'pwd' in inputs:
-        print("\33[34m" + os.getcwd() + "\33[0m")
-    elif 'cp' in inputs:
+            print(Black.BLUE + ls[list] + {Style.NORMAL})
+    elif 'pwd' == command:
+        print(Black.BLUE + os.getcwd() + {Style.NORMAL})
+    elif 'cp' == command:
         # 提醒：复制到的地点需要是目录或是文件，如是文件，被复制到的文件将会被替换为原文件。
         # 如果想复制到指定目录中，可以使用/分隔目录，比如path/one/dir,path/one/file.txt等。
         try:
-            cpdata = inputs[1]
-            path = inputs[2]
+            cpdata = args[0]
+            path = args[1]
             copy2(cpdata, path)
         except FileNotFoundError:
-            print(f'\33[31mError: Can\'t find "{cpdata}"')
-        except:
-            print('\33[31mError: Unable to recognize the inputs\33[0m')
+            print(errorText(3, cpdata))
+        except Exception:
+            print(errorText(0))
         else:
             print('Successfully executed.')
-    elif 'move' in inputs:
+    elif 'move' == command:
         # 提醒：移动到的地点需要是目录，如目标位置不存在，原文件将会被重命名为目标位置。
         # 如果您想复制到指定目录中，可以使用/分隔目录，比如path/one/dir,path/one/file.txt等。
         try:
-            movedata = inputs[1]
-            path = inputs[2]
+            movedata = args[0]
+            path = args[1]
             move(movedata, path)
         except FileNotFoundError:
-            print(f'\33[31mError: Can\'t find "{movedata}"')
-        except:
-            print('\33[31mError: Unable to recognize the inputs\33[0m')
+            print(errorText(3, movedata))
+        except Exception:
+            print(errorText(0))
         else:
             print('Successfully executed.')
-    elif 'rename' in inputs:
+    elif 'rename' == command:
         try:
-            renamedata = inputs[1]
-            newname = inputs[2]
+            renamedata = args[0]
+            newname = args[1]
             os.rename(renamedata, newname)
         except FileNotFoundError:
-            print(f'\33[31mError: Can\'t find "{renamedata}"')
-        except:
-            print('\33[31mError: Unable to recognize the inputs\33[0m')
+            print(errorText(3, renamedata))
+        except Exception:
+            print(errorText(0))
         else:
             print('Successfully executed.')
-    elif 'cd' in inputs or 'chdir' in inputs:
+    elif 'cd' == command or 'chdir' == command:
         try:
-            cdata = inputs[1]
+            cdata = args[0]
             os.chdir(cdata)
         except FileNotFoundError:
-            print(f'\33[31mError: Can\'t find "{cdata}"\33[0m')
-        except:
-            print('\33[31mError: Unable to recognize the inputs\33[0m')
-    elif 'top' in inputs or 'tasklist' in inputs:
+            print(errorText(3, cdata))
+        except Exception:
+            print(errorText(0))
+    elif 'top' == command or 'tasklist' == command or 'ps' == command:
         processes = process_iter()
-        print('________Name________\33[34m|\33[0m_PID_\33[34m|\33[0mMemory Usage\33[34m|\33')
+        print(f'________Name________{Black.BLUE}|{Style.NORMAL}_PID_{Black.BLUE}|'
+              f'{Style.NORMAL}Memory Usage{Black.BLUE}|{Style.NORMAL}')
         for process in processes:
             if len(process.name()) > 20:
-                print(process.name()[:17] + "...\33[34m|\33[0m", end='')
-                print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + '\33[34m|\33[0m', end='')
+                print(process.name()[:17] + f"...{Black.BLUE}|{Style.NORMAL}", end='')
+                print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + f'{Black.BLUE}|{Style.NORMAL}', end='')
                 print(str(round(process.memory_percent(), 2)) + (
-                            10 - len(str(round(process.memory_percent(), 2)))) * ' ' + ' %\33[34m|\33[0m')
+                        10 - len(str(round(process.memory_percent(), 2)))) * ' ' + f' %{Black.BLUE}|{Style.NORMAL}')
             else:
-                print(process.name() + (20 - len(process.name())) * ' ' + "\33[34m|\33[0m", end='')
-                print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + '\33[34m|\33[0m', end='')
+                print(process.name() + (20 - len(process.name())) * ' ' + f"{Black.BLUE}|{Style.NORMAL}", end='')
+                print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + f'{Black.BLUE}|{Style.NORMAL}', end='')
                 print(str(round(process.memory_percent(), 2)) +
-                      (10 - len(str(round(process.memory_percent(), 2)))) * ' ' + ' %\33[34m|\33[0m')
-    elif 'taskkill' in inputs:
+                      (10 - len(str(round(process.memory_percent(), 2)))) * ' ' + f' %{Black.BLUE}|{Style.NORMAL}')
+    elif 'taskkill' == command:
         try:
-            if '/pid' in inputs:
+            if '/pid' == command:
                 hasp = 2
             else:
                 hasp = 1
@@ -211,43 +138,55 @@ while True:
                     sure('system("taskkill /f /pid " + str(process.pid) + " /t")')
                 if process.name() == inputs[hasp]:
                     sure('system("taskkill /f /im " + process.name() + " /t")')
-        except:
-            print('\33[31mError: Unable to recognize the inputs\33[0m')
-    elif 'md' in inputs or 'mkdir' in inputs:
+        except Exception:
+            print(errorText(0))
+    elif 'md' == command or 'mkdir' == command:
         try:
-            dirname = inputs[1]
+            dirname = args[0]
             os.mkdir(dirname)
         except FileExistsError:
-            print("\33[31mError: Directory already exists\33[0m")
-        except:
-            print("\33[31mError: Unable to recognize the inputs\33[0m")
-    elif 'exit' in inputs or 'quit' in inputs:
+            print(errorText(4))
+        except Exception:
+            print(errorText(0))
+    elif 'exit' == command or 'quit' == command:
         exit(0)
-    elif 'echo' in inputs:
+    elif 'echo' == command:
         try:
-            print(inputs[1])
-        except:
-            print("\33[31mError: Unable to recognize the inputs\33[0m")
-    elif 'help' in inputs:
-        if "-en" in inputs:
-            with open("help/help.dat", 'r') as help_en:
-                data = help_en.read()
-            print(data)
-        elif "-zh" in inputs:
-            with open("help/help-zh.dat", 'r', encoding="utf-8") as help_zh:
-                data = help_zh.read()
-            print(data)
-        elif "-fr" in inputs:
-            with open("help/help-fr.dat", 'r') as help_fr:
-                data = help_fr.read()
-            print(data)
-        elif "-jp" in inputs:
-            with open("help/help-jp.dat", 'r', encoding="utf-8") as help_jp:
-                data = help_jp.read()
-            print(data)
-        else:
-            with open("help/help.dat", 'r') as help_en:
-                data = help_en.read()
-            print(data)
+            print(args[0])
+        except Exception:
+            print(errorText(0))
+    elif 'help' == command:
+        try:
+            if "-en" == command:
+                with open("help/help.dat", 'r') as help_en:
+                    data = help_en.read()
+                print(data)
+            elif "-zh" == command:
+                with open("help/help-zh.dat", 'r', encoding="utf-8") as help_zh:
+                    data = help_zh.read()
+                print(data)
+            elif "-fr" == command:
+                with open("help/help-fr.dat", 'r') as help_fr:
+                    data = help_fr.read()
+                print(data)
+            elif "-jp" == command:
+                with open("help/help-jp.dat", 'r', encoding="utf-8") as help_jp:
+                    data = help_jp.read()
+                print(data)
+        except Exception:
+            try:
+                with open("help/help.dat", 'r') as help_en:
+                    data = help_en.read()
+                print(data)
+            except Exception:
+                print(errorText(5))
     else:
-        print(f'\33[31m"{inputs[0]}" is neither a command.\33[0m')
+        try:
+            if command + '.exe' in os.listdir("App"):
+                os.system(command + '.exe')
+            elif command + '.bat' in os.listdir("App"):
+                os.system(command + '.bat')
+            else:
+                print(f'\33[31m"{command}" is neither a command or an applications.{Style.NORMAL}')
+        except FileNotFoundError:
+            print(f'\33[31m"{command}" is neither a command or an applications.{Style.NORMAL}')
