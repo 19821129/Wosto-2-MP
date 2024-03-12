@@ -5,9 +5,9 @@ def calculate(expression):
         result = eval(expression)
         return result
     except ZeroDivisionError:
-        print(errorText(2))
+        print(info(2))
     except Exception:
-        print(errorText(1))
+        print(info(1))
 
 def main():
     while True:
@@ -20,7 +20,7 @@ def main():
             try:
                 print(expr[1], '≈', round(float(expr[1]), int(expr[2])))
             except Exception:
-                print(errorText(1))
+                print(info(1))
         elif "help" in expr:
             try:
                 if "-en" == expr[1]:
@@ -28,7 +28,7 @@ def main():
                         data = help_en.read()
                     print(data)
                 elif "-zh" == expr[1]:
-                    with open("Expr_APP/help_Expr/help_Expr-zh.dat", 'r', encoding="utf-8") as help_zh:
+                    with open("Expr_APP/help_Expr/help_Expr-zh.dat", 'r') as help_zh:
                         data = help_zh.read()
                     print(data)
                 elif "-fr" == expr[1]:
@@ -36,7 +36,7 @@ def main():
                         data = help_fr.read()
                     print(data)
                 elif "-jp" == expr[1]:
-                    with open("Expr_APP/help_Expr/help_Expr-jp.dat", 'r', encoding="utf-8") as help_jp:
+                    with open("Expr_APP/help_Expr/help_Expr-jp.dat", 'r') as help_jp:
                         data = help_jp.read()
                     print(data)
             except Exception:
@@ -45,7 +45,7 @@ def main():
                         data = help_en.read()
                     print(data)
                 except Exception:
-                    print(errorText(5))
+                    print(info(5))
         else:
             result = calculate("".join(expr))
             print("".join(expr), '=', result)

@@ -3,6 +3,7 @@
 Created on Thu Feb 10 21:14:32 2022
 @author: fangg
 """
+# 尽量减少第三方库的使用
 from MP_func.MP_Func import *
 import Expr_APP.Expr as expr
 from shutil import *
@@ -19,6 +20,7 @@ while True:
     if len(inputs) != 1:
         args = tuple(inputs[1].split(' '))
 
+    # 已更新 Python 3.12，对是否使用 match + case 仍旧未确定
     if 'expr' == command or 'math' == command:
         expr.main()
     elif 'type' == command:
@@ -28,9 +30,9 @@ while True:
                 readata = fileread.read()
                 print(readata)
         except FileNotFoundError:
-            print(errorText(0, readfile))
+            print(info(0, readfile))
         except Exception:
-            print(errorText(0))
+            print(info(0))
     elif 'rm' == command:
         try:
             rmdata = args[0]
@@ -38,9 +40,9 @@ while True:
         except FileNotFoundError:
             print(f'\33[31mError: Can\'t find "{rmdata}"{Style.NORMAL}')
         except Exception:
-            print(errorText(0))
+            print(info(0))
         else:
-            print('Successfully executed.')
+            print(info(6))
     elif 'rmdir' == command:
         try:
             deldir = args[0]
@@ -48,9 +50,9 @@ while True:
         except FileNotFoundError:
             print(f'\33[31mError: Can\'t find "{deldir}"')
         except Exception:
-            print(errorText(0))
+            print(info(0))
         else:
-            print('Successfully executed.')
+            print(info(6))
     elif 'ls' == command or 'dir' == command:
         try:
             if '-a' == command:
@@ -63,22 +65,22 @@ while True:
         for list in range(len(ls)):
             if ls[list][0] == '.' and hasp == 1:
                 continue
-            print(Black.BLUE + ls[list] + {Style.NORMAL})
+            print(Black.BOLD_BLUE + ls[list] + Style.NORMAL)
     elif 'pwd' == command:
-        print(Black.BLUE + os.getcwd() + {Style.NORMAL})
+        print(Black.BOLD_BLUE + os.getcwd() + Style.NORMAL)
     elif 'cp' == command:
-        # 提醒：复制到的地点需要是目录或是文件，如是文件，被复制到的文件将会被替换为原文件。
+        # 提醒：复制到的地点需要是目录或是文件，如是文件，会被替换为原文件。
         # 如果想复制到指定目录中，可以使用/分隔目录，比如path/one/dir,path/one/file.txt等。
         try:
             cpdata = args[0]
             path = args[1]
             copy2(cpdata, path)
         except FileNotFoundError:
-            print(errorText(3, cpdata))
+            print(info(3, cpdata))
         except Exception:
-            print(errorText(0))
+            print(info(0))
         else:
-            print('Successfully executed.')
+            print(info(6))
     elif 'move' == command:
         # 提醒：移动到的地点需要是目录，如目标位置不存在，原文件将会被重命名为目标位置。
         # 如果您想复制到指定目录中，可以使用/分隔目录，比如path/one/dir,path/one/file.txt等。
@@ -87,20 +89,20 @@ while True:
             path = args[1]
             move(movedata, path)
         except FileNotFoundError:
-            print(errorText(3, movedata))
+            print(info(3, movedata))
         except Exception:
-            print(errorText(0))
+            print(info(0))
         else:
-            print('Successfully executed.')
+            print(info(6))
     elif 'rename' == command:
         try:
             renamedata = args[0]
             newname = args[1]
             os.rename(renamedata, newname)
         except FileNotFoundError:
-            print(errorText(3, renamedata))
+            print(info(3, renamedata))
         except Exception:
-            print(errorText(0))
+            print(info(0))
         else:
             print('Successfully executed.')
     elif 'cd' == command or 'chdir' == command:
@@ -108,9 +110,9 @@ while True:
             cdata = args[0]
             os.chdir(cdata)
         except FileNotFoundError:
-            print(errorText(3, cdata))
+            print(info(3, cdata))
         except Exception:
-            print(errorText(0))
+            print(info(0))
     elif 'top' == command or 'tasklist' == command or 'ps' == command:
         processes = process_iter()
         print(f'________Name________{Black.BLUE}|{Style.NORMAL}_PID_{Black.BLUE}|'
@@ -118,14 +120,11 @@ while True:
         for process in processes:
             if len(process.name()) > 20:
                 print(process.name()[:17] + f"...{Black.BLUE}|{Style.NORMAL}", end='')
-                print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + f'{Black.BLUE}|{Style.NORMAL}', end='')
-                print(str(round(process.memory_percent(), 2)) + (
-                        10 - len(str(round(process.memory_percent(), 2)))) * ' ' + f' %{Black.BLUE}|{Style.NORMAL}')
             else:
                 print(process.name() + (20 - len(process.name())) * ' ' + f"{Black.BLUE}|{Style.NORMAL}", end='')
-                print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + f'{Black.BLUE}|{Style.NORMAL}', end='')
-                print(str(round(process.memory_percent(), 2)) +
-                      (10 - len(str(round(process.memory_percent(), 2)))) * ' ' + f' %{Black.BLUE}|{Style.NORMAL}')
+            print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + f'{Black.BLUE}|{Style.NORMAL}', end='')
+            print(str(round(process.memory_percent(), 2)) +
+                    (10 - len(str(round(process.memory_percent(), 2)))) * ' ' + f' %{Black.BLUE}|{Style.NORMAL}')
     elif 'taskkill' == command:
         try:
             if '/pid' == command:
@@ -139,22 +138,22 @@ while True:
                 if process.name() == inputs[hasp]:
                     sure('system("taskkill /f /im " + process.name() + " /t")')
         except Exception:
-            print(errorText(0))
+            print(info(0))
     elif 'md' == command or 'mkdir' == command:
         try:
             dirname = args[0]
             os.mkdir(dirname)
         except FileExistsError:
-            print(errorText(4))
+            print(info(4))
         except Exception:
-            print(errorText(0))
+            print(info(0))
     elif 'exit' == command or 'quit' == command:
         exit(0)
     elif 'echo' == command:
         try:
             print(args[0])
         except Exception:
-            print(errorText(0))
+            print(info(0))
     elif 'help' == command:
         try:
             if "-en" == command:
@@ -179,14 +178,15 @@ while True:
                     data = help_en.read()
                 print(data)
             except Exception:
-                print(errorText(5))
+                print(info(5))
     else:
         try:
             if command + '.exe' in os.listdir("App"):
-                os.system(command + '.exe')
+                os.popen(command + '.exe')
             elif command + '.bat' in os.listdir("App"):
-                os.system(command + '.bat')
+                os.popen(command + '.bat')
             else:
                 print(f'\33[31m"{command}" is neither a command or an applications.{Style.NORMAL}')
         except FileNotFoundError:
-            print(f'\33[31m"{command}" is neither a command or an applications.{Style.NORMAL}')
+            print(f'{Black.BOLD_RED}"{command}" is neither a command or an applications.{Style.NORMAL}')
+# 添加第三方软件的接口
