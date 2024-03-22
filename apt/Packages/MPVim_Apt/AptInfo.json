@@ -1,0 +1,9 @@
+{
+  "package_name": "MPVim",
+  "category": "Office",
+  "is_bundle": true,
+  "publisher": "Fang-Omega",
+  "version": "1.0",
+  "edition": "Normal",
+  "init_file": "MPVim.py"
+}

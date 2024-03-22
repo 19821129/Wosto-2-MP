@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
+import os
+
+MP_PATH = os.path.dirname(os.path.realpath(__file__ + "\\.."))
+
+
 class Style:
     NORMAL = '\33[0m'
     BOLD = '\33[1m'
     ITALIC = '\33[3m'
     UNDERLINE = '\33[4m'
+
 
 class Black:
     BLACK = '\33[30m'
@@ -42,6 +48,7 @@ class Black:
     UNDERLINE_CYAN = '\33[4m\33[36m'
     UNDERLINE_WHITE = '\33[4m\33[37m'
 
+
 class Background:
     RED = '\33[31m'
     GREEN = '\33[32m'
@@ -50,31 +57,28 @@ class Background:
     VIOLET = '\33[35m'
     CYAN = '\33[36m'
 
-def info(type, name=None):
-    if type == 0:
-        return f'{Black.BOLD_RED}Error: Unable to recognize the inputs{Style.NORMAL}'
-    elif type == 1:
-        return f'{Black.BOLD_RED}Error: Unable to recognize the number entered{Style.NORMAL}'
-    elif type == 2:
-        return f'{Black.BOLD_RED}Error: Divisor cannot be 0{Style.NORMAL}'
-    elif type == 3:
-        return f'{Black.BOLD_RED}Error: Can\'t find "{name}"{Style.NORMAL}'
-    elif type == 4:
-        return f"{Black.BOLD_RED}Error: Directory already exists{Style.NORMAL}"
-    elif type == 5:
-        return f'{Black.BOLD_RED}Please change dir to "Wosto_2_MP" dir to read the help.{Style.NORMAL}'
-    elif type == 6:
-        return f'{Black.ITALIC_GREEN}Successfully executed.{Style.NORMAL}'
-    else:
-        return 0
 
-def sure(do='pass') -> None:
+def info(index: int, name=None) -> str:
+    infolist = (f'{Black.BOLD_RED}Error: Unable to recognize the inputs{Style.NORMAL}',
+                f'{Black.BOLD_RED}Error: Unable to recognize the number entered{Style.NORMAL}',
+                f'{Black.BOLD_RED}Error: Divisor cannot be 0{Style.NORMAL}',
+                f'{Black.BOLD_RED}Error: Can\'t find "{name}"{Style.NORMAL}',
+                f"{Black.BOLD_RED}Error: Directory already exists{Style.NORMAL}"
+                f'{Black.BOLD_RED}Please change dir to "Wosto_2_MP" dir to read the help.{Style.NORMAL}',
+                f'{Black.ITALIC_GREEN}Successfully executed.{Style.NORMAL}')
+    return infolist[index]
+
+
+def sure(do: object = 'pass') -> bool:
     while True:
-        bool = input('sure?(y/n)')
-        if bool == 'y':
-            exec(do)
-            return True
-        elif bool == 'n':
-            return False
-        else:
-            print(info(0))
+        is_true = input('sure?(y/n)')
+        globalist = {}
+        locallist = {}
+        while True:
+            if is_true == 'y':
+                exec(do, globalist, locallist)
+                return True, globalist, locallist
+            elif is_true == 'n':
+                return False, globalist, locallist
+            else:
+                print(info(0))

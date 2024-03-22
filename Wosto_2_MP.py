@@ -5,11 +5,13 @@ Created on Thu Feb 10 21:14:32 2022
 """
 # 尽量减少第三方库的使用
 from MP_func.MP_Func import *
-import Expr_APP.Expr as expr
+import Expr.Expr as expr
 from shutil import *
 from psutil import *
 from sys import *
 import os
+
+os.chdir(MP_PATH)
 
 while True:
     inputstr = input(f"WostoMP # {os.getcwd()} $ ")
@@ -20,17 +22,16 @@ while True:
     if len(inputs) != 1:
         args = tuple(inputs[1].split(' '))
 
-    # 已更新 Python 3.12，对是否使用 match + case 仍旧未确定
     if 'expr' == command or 'math' == command:
         expr.main()
-    elif 'type' == command:
+    if 'type' == command:
         try:
             readfile = args[0]
             with open(readfile, 'r') as fileread:
                 readata = fileread.read()
                 print(readata)
         except FileNotFoundError:
-            print(info(0, readfile))
+            print(info(3, readfile))
         except Exception:
             print(info(0))
     elif 'rm' == command:
@@ -38,28 +39,28 @@ while True:
             rmdata = args[0]
             sure("remove(rmdata)")
         except FileNotFoundError:
-            print(f'\33[31mError: Can\'t find "{rmdata}"{Style.NORMAL}')
+            print(info(3, rmdata))
         except Exception:
             print(info(0))
         else:
             print(info(6))
     elif 'rmdir' == command:
         try:
-            deldir = args[0]
-            sure('rmtree(deldir)')
+            rmdir = args[0]
+            sure('rmtree(rmdir)')
         except FileNotFoundError:
-            print(f'\33[31mError: Can\'t find "{deldir}"')
+            print(info(3, rmdir))
         except Exception:
             print(info(0))
         else:
             print(info(6))
     elif 'ls' == command or 'dir' == command:
         try:
-            if '-a' == command:
-                hasp = 2
-            else:
+            if '-a' in args:
                 hasp = 1
-            ls = os.listdir(inputs[hasp])
+            else:
+                hasp = 0
+            ls = os.listdir(args[hasp])
         except Exception:
             ls = os.listdir(os.getcwd())
         for list in range(len(ls)):
@@ -123,20 +124,20 @@ while True:
             else:
                 print(process.name() + (20 - len(process.name())) * ' ' + f"{Black.BLUE}|{Style.NORMAL}", end='')
             print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + f'{Black.BLUE}|{Style.NORMAL}', end='')
-            print(str(round(process.memory_percent(), 2)) +
+            print(str(round(process.memory_percent(), 2))
                     (10 - len(str(round(process.memory_percent(), 2)))) * ' ' + f' %{Black.BLUE}|{Style.NORMAL}')
     elif 'taskkill' == command:
         try:
-            if '/pid' == command:
-                hasp = 2
-            else:
+            if '/pid' == args[0]:
                 hasp = 1
+            else:
+                hasp = 0
             processes = process_iter()
             for process in processes:
-                if hasp == 2 and process.pid == inputs[hasp]:
-                    sure('system("taskkill /f /pid " + str(process.pid) + " /t")')
-                if process.name() == inputs[hasp]:
-                    sure('system("taskkill /f /im " + process.name() + " /t")')
+                if hasp == 1 and process.pid == args[hasp]:
+                    sure('process.kill()')
+                if process.name() == args[hasp]:
+                    sure('process.kill()')
         except Exception:
             print(info(0))
     elif 'md' == command or 'mkdir' == command:
@@ -156,29 +157,30 @@ while True:
             print(info(0))
     elif 'help' == command:
         try:
+            # FIXME 无法启动 Help
             if "-en" == command:
-                with open("help/help.dat", 'r') as help_en:
+                with open(f"{__file__}/help/help.dat", 'r') as help_en:
                     data = help_en.read()
                 print(data)
             elif "-zh" == command:
-                with open("help/help-zh.dat", 'r', encoding="utf-8") as help_zh:
+                with open(f"{__file__}/help/help-zh.dat", 'r', encoding="utf-8") as help_zh:
                     data = help_zh.read()
                 print(data)
             elif "-fr" == command:
-                with open("help/help-fr.dat", 'r') as help_fr:
+                with open(f"{__file__}/help/help-fr.dat", 'r', encoding="utf-8") as help_fr:
                     data = help_fr.read()
                 print(data)
             elif "-jp" == command:
-                with open("help/help-jp.dat", 'r', encoding="utf-8") as help_jp:
+                with open(f"{__file__}/help/help-jp.dat", 'r', encoding="utf-8") as help_jp:
                     data = help_jp.read()
                 print(data)
         except Exception:
             try:
-                with open("help/help.dat", 'r') as help_en:
+                with open(f"{__file__}/help/help.dat", 'r') as help_en:
                     data = help_en.read()
                 print(data)
             except Exception:
-                print(info(5))
+                print(info(0))
     else:
         try:
             if command + '.exe' in os.listdir("App"):
@@ -186,7 +188,7 @@ while True:
             elif command + '.bat' in os.listdir("App"):
                 os.popen(command + '.bat')
             else:
-                print(f'\33[31m"{command}" is neither a command or an applications.{Style.NORMAL}')
+                print(f'{Black.BOLD_RED}"{command}" is neither a command or an applications.{Style.NORMAL}')
         except FileNotFoundError:
             print(f'{Black.BOLD_RED}"{command}" is neither a command or an applications.{Style.NORMAL}')
 # 添加第三方软件的接口
