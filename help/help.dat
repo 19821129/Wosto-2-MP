@@ -1,3 +1,4 @@
+apt {command}           Run a program
 cd [path]               Change working directory
 chdir [path]            Change working directory
 cp [file] [path]        Copy file
@@ -11,8 +12,7 @@ move [file] [path]      Move a file
 pwd                     Displays the working directory
 quit                    Leaves Wosto 2 MP
 rename [name1] [name2]  Renaming a file
-rm [file]               Delete file
-rmdir [direction]       Delete folder
+rm [file/dir]           Delete file
 taskkill /pid [task]    Kill process
 tasklist                Display current process
 top                     Displays the current process

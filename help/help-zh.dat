@@ -11,8 +11,7 @@ move [file] [path]      移动文件
 pwd                     显示工作目录
 quit                    离开 Wosto 2 MP
 rename [name1] [name2]  重命名文件
-rm [file]               删除文件
-rmdir [direction]       删除文件夹
+rm [file/dir]           删除文件
 taskkill /pid [task]    杀死进程
 tasklist                显示当前进程
 top                     显示当前进程

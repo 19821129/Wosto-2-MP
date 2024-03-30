@@ -11,7 +11,7 @@ move [file] [path]      Déplacer des fichiers
 pwd                     Afficher le Répertoire de travail
 quit                    Départ du Wosto 2 MP
 rename [name1] [name2]  Renommer un fichier
-rm [file]               Supprimer un fichier
+rm [file/dir]           Supprimer un fichier
 rmdir [direction]       Supprimer un dossier
 taskkill /pid [task]    Processus de compression de puits
 tasklist                Afficher le processus actuel

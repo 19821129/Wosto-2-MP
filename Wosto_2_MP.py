@@ -13,8 +13,6 @@ from psutil import *
 from sys import *
 import os
 
-os.chdir(MP_PATH)
-
 while True:
     inputstr = input(f"WostoMP # {os.getcwd()} $ ")
     inputstr = inputstr.strip()
@@ -25,7 +23,7 @@ while True:
 
     if 'expr' == command or 'math' == command:
         expr.main()
-    if 'type' == command:
+    if 'type' == command or 'cat' == command:
         try:
             readfile = args[0]
             with open(readfile, 'r') as fileread:
@@ -35,25 +33,16 @@ while True:
             print(info(3, readfile))
         except Exception:
             print(info(0))
-    # FIXME 无法删除，报错
     elif 'rm' == command:
         try:
             rmdata = args[0]
             if sure():
-                os.remove(rmdata)
+                if os.path.isfile(rmdata):
+                    os.remove(rmdata)
+                else:
+                    os.rmdir(rmdata)
         except FileNotFoundError:
             print(info(3, rmdata))
-        except Exception:
-            print(info(0))
-        else:
-            print(info(6))
-    elif 'rmdir' == command:
-        try:
-            rmdir = args[0]
-            if sure():
-                os.rmdir(rmdir)
-        except FileNotFoundError:
-            print(info(3, rmdir))
         except Exception:
             print(info(0))
         else:
@@ -74,8 +63,6 @@ while True:
     elif 'pwd' == command:
         print(Black.BOLD_BLUE + os.getcwd() + Style.NORMAL)
     elif 'cp' == command:
-        # 提醒：复制到的地点需要是目录或是文件，如是文件，会被替换为原文件。
-        # 如果想复制到指定目录中，可以使用/分隔目录，比如path/one/dir,path/one/file.txt等。
         try:
             cpdata = args[0]
             path = args[1]
@@ -86,9 +73,7 @@ while True:
             print(info(0))
         else:
             print(info(6))
-    elif 'move' == command:
-        # 提醒：移动到的地点需要是目录，如目标位置不存在，原文件将会被重命名为目标位置。
-        # 如果您想复制到指定目录中，可以使用/分隔目录，比如path/one/dir,path/one/file.txt等。
+    elif 'mv' == command:
         try:
             movedata = args[0]
             path = args[1]
@@ -112,6 +97,8 @@ while True:
             print('Successfully executed.')
     elif 'cd' == command or 'chdir' == command:
         try:
+            if args[0] == "~":
+                args[0] = MP_PATH
             cdata = args[0]
             os.chdir(cdata)
         except FileNotFoundError:
@@ -209,4 +196,3 @@ while True:
                 print(f'{Black.BOLD_RED}"{command}" is neither a command or an applications.{Style.NORMAL}')
         except FileNotFoundError:
             print(f'{Black.BOLD_RED}"{command}" is neither a command or an applications.{Style.NORMAL}')
-# 添加第三方软件的接口
