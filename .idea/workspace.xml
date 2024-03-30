@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2737f97d-c0d0-460f-a5d1-7a10215eeed6" name="更改" comment="NewBrekono-3(3m23d3b)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Expr/Expr.py" beforeDir="false" afterPath="$PROJECT_DIR$/Expr/Expr.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MP_func/MP_Func.py" beforeDir="false" afterPath="$PROJECT_DIR$/MP_func/MP_Func.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wosto_2_MP.py" beforeDir="false" afterPath="$PROJECT_DIR$/Wosto_2_MP.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apt/apt.py" beforeDir="false" afterPath="$PROJECT_DIR$/apt/apt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hhh" beforeDir="false" afterPath="$PROJECT_DIR$/Expr/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +78,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "full.screen.before.presentation.mode": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "G:/Keep Talking Nobody Explodes",
+    "last_opened_file_path": "D:/Wosto_MP",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -202,6 +202,8 @@
       <workItem from="1711172487969" duration="400000" />
       <workItem from="1711176344280" duration="19000" />
       <workItem from="1711177634445" duration="245000" />
+      <workItem from="1712230048977" duration="488000" />
+      <workItem from="1712273715199" duration="4399000" />
     </task>
     <task id="LOCAL-00001" summary="Wosto 2 MPEdition 0.1(Brekono)">
       <option name="closed" value="true" />
@@ -302,7 +304,7 @@
     <SUITE FILE_PATH="coverage/Wosto_2_MP$QLCDNumber.coverage" NAME="QLCDNumber 覆盖结果" MODIFIED="1709039842934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="G:/My_Python_Model/!-QLCDNumber" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$MayDOS_System.coverage" NAME="MayDOS_System 覆盖结果" MODIFIED="1710156265844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Download/MayDOS_v0.7.0_1/MayDOS_v0.7.0" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$math.coverage" NAME="math 覆盖结果" MODIFIED="1708832705896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/expr_package" />
-    <SUITE FILE_PATH="coverage/Wosto_2_MP$Wosto_2_MP.coverage" NAME="Wosto_2_MP 覆盖结果" MODIFIED="1711172363113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Wosto_2_MP$Wosto_2_MP.coverage" NAME="Wosto_2_MP 覆盖结果" MODIFIED="1712280426753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$Init.coverage" NAME="Init 覆盖结果" MODIFIED="1710934744444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apt/Packages/MPVim_Apt" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$MPVim.coverage" NAME="MPVim 覆盖结果" MODIFIED="1711104044198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apt/Packages/MPVim_Apt" />
   </component>

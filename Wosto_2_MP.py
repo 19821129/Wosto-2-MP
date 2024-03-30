@@ -18,6 +18,11 @@ while True:
     inputstr = inputstr.strip()
     inputs = inputstr.split(' ', 1)
     command = inputs[0].lower()
+    try:
+        if args:
+            del args
+    except Exception:
+        pass
     if len(inputs) != 1:
         args = tuple(inputs[1].split(' '))
 
@@ -47,19 +52,35 @@ while True:
             print(info(0))
         else:
             print(info(6))
+    elif 'touch' == command:
+        try:
+            with open(args[0], "x", encoding="utf-8") as filewrite:
+                filewrite.write("")
+        except FileExistsError:
+            print(info(7))
+        except Exception:
+            print(info(0))
     elif 'ls' == command or 'dir' == command:
         try:
             if '-a' in args:
                 hasp = 1
             else:
                 hasp = 0
-            ls = os.listdir(args[hasp])
+
+            try:
+                ls_hasp = os.listdir(args[hasp])
+            except:
+                ls_hasp = os.listdir(os.getcwd())
+            for list in range(len(ls_hasp)):
+                if ls_hasp[list][0] == '.' and hasp != 1:
+                    continue
+                print(Black.BOLD_BLUE + ls_hasp[list] + Style.NORMAL)
         except Exception:
-            ls = os.listdir(os.getcwd())
-        for list in range(len(ls)):
-            if ls[list][0] == '.' and hasp == 1:
-                continue
-            print(Black.BOLD_BLUE + ls[list] + Style.NORMAL)
+            ls_has_not_p = os.listdir(os.getcwd())
+            for list in range(len(ls_has_not_p)):
+                if ls_has_not_p[list][0] == '.':
+                    continue
+                print(Black.BOLD_BLUE + ls_has_not_p[list] + Style.NORMAL)
     elif 'pwd' == command:
         print(Black.BOLD_BLUE + os.getcwd() + Style.NORMAL)
     elif 'cp' == command:
@@ -97,8 +118,6 @@ while True:
             print('Successfully executed.')
     elif 'cd' == command or 'chdir' == command:
         try:
-            if args[0] == "~":
-                args[0] = MP_PATH
             cdata = args[0]
             os.chdir(cdata)
         except FileNotFoundError:
@@ -117,7 +136,7 @@ while True:
             print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + f'{Black.BLUE}|{Style.NORMAL}', end='')
             print(str(round(process.memory_percent(), 2)) +
                   (10 - len(str(round(process.memory_percent(), 2)))) * ' ' + f' %{Black.BLUE}|{Style.NORMAL}')
-    elif 'taskkill' == command:
+    elif 'taskkill' == command or 'kill' == command:
         try:
             if '-pid' == args[0]:
                 hasp = 1

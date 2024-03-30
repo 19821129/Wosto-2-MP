@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../.idea/My Python py for Wosto MP.iml" filepath="$PROJECT_DIR$/../../.idea/My Python py for Wosto MP.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Wosto_2_MP.iml" filepath="$PROJECT_DIR$/.idea/Wosto_2_MP.iml" />
     </modules>
   </component>

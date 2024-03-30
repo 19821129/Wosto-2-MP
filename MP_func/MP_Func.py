@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 
-MP_PATH = os.path.dirname(os.path.realpath(__file__ + "\\.."))
+MP_PATH = os.path.dirname(os.path.realpath(__file__ ) + "\\..")
 
 
 class Style:
@@ -65,7 +65,8 @@ def info(index: int, name=None) -> str:
                 f'{Black.BOLD_RED}Error: Can\'t find "{name}"{Style.NORMAL}',
                 f"{Black.BOLD_RED}Error: Directory already exists{Style.NORMAL}",
                 f'{Black.BOLD_RED}Please change dir to "Wosto_2_MP" dir to read the help.{Style.NORMAL}',
-                f'{Black.ITALIC_GREEN}Successfully executed.{Style.NORMAL}']
+                f'{Black.ITALIC_GREEN}Successfully executed.{Style.NORMAL}',
+                f'{Black.BOLD_RED}Error: The file already exists{Style.NORMAL}']
     return infolist[index]
 
 

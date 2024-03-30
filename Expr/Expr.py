@@ -25,24 +25,24 @@ def main():
         elif "help" in expr:
             try:
                 if "-en" == expr[1]:
-                    with open(f"{__file__}/help_Expr/help_Expr.dat", 'r') as help_en:
+                    with open(f"{MP_PATH}/help_Expr/help_Expr.dat", 'r') as help_en:
                         data = help_en.read()
                     print(data)
                 elif "-zh" == expr[1]:
-                    with open(f"{__file__}/help_Expr/help_Expr-zh.dat", 'r', encoding="utf-8") as help_zh:
+                    with open(f"{MP_PATH}/help_Expr/help_Expr-zh.dat", 'r', encoding="utf-8") as help_zh:
                         data = help_zh.read()
                     print(data)
                 elif "-fr" == expr[1]:
-                    with open(f"{__file__}/help_Expr/help_Expr-fr.dat", 'r', encoding="utf-8") as help_fr:
+                    with open(f"{MP_PATH}/help_Expr/help_Expr-fr.dat", 'r', encoding="utf-8") as help_fr:
                         data = help_fr.read()
                     print(data)
                 elif "-jp" == expr[1]:
-                    with open(f"{__file__}/help_Expr/help_Expr-jp.dat", 'r', encoding="utf-8") as help_jp:
+                    with open(f"{MP_PATH}/help_Expr/help_Expr-jp.dat", 'r', encoding="utf-8") as help_jp:
                         data = help_jp.read()
                     print(data)
             except Exception:
                 try:
-                    with open(f"{__file__}/help_ help_Expr.dat", 'r') as help_en:
+                    with open(f"{MP_PATH}/help_ help_Expr.dat", 'r') as help_en:
                         data = help_en.read()
                     print(data)
                 except Exception:
