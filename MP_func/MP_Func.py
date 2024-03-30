@@ -59,26 +59,25 @@ class Background:
 
 
 def info(index: int, name=None) -> str:
-    infolist = (f'{Black.BOLD_RED}Error: Unable to recognize the inputs{Style.NORMAL}',
+    infolist = [f'{Black.BOLD_RED}Error: Unable to recognize the inputs{Style.NORMAL}',
                 f'{Black.BOLD_RED}Error: Unable to recognize the number entered{Style.NORMAL}',
                 f'{Black.BOLD_RED}Error: Divisor cannot be 0{Style.NORMAL}',
                 f'{Black.BOLD_RED}Error: Can\'t find "{name}"{Style.NORMAL}',
-                f"{Black.BOLD_RED}Error: Directory already exists{Style.NORMAL}"
+                f"{Black.BOLD_RED}Error: Directory already exists{Style.NORMAL}",
                 f'{Black.BOLD_RED}Please change dir to "Wosto_2_MP" dir to read the help.{Style.NORMAL}',
-                f'{Black.ITALIC_GREEN}Successfully executed.{Style.NORMAL}')
+                f'{Black.ITALIC_GREEN}Successfully executed.{Style.NORMAL}']
     return infolist[index]
 
 
 def sure(do: object = 'pass') -> bool:
     while True:
-        is_true = input('sure?(y/n)')
-        globalist = {}
-        locallist = {}
+        is_true = input('sure?(y/n) ')
         while True:
             if is_true == 'y':
-                exec(do, globalist, locallist)
-                return True, globalist, locallist
+                exec(do)
+                return True
             elif is_true == 'n':
-                return False, globalist, locallist
+                return False
             else:
                 print(info(0))
+                sure(do)

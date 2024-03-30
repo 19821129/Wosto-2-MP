@@ -3,9 +3,11 @@
 Created on Thu Feb 10 21:14:32 2022
 @author: fangg
 """
+# TODO APT 添加进 Help 文件
 # 尽量减少第三方库的使用
 from MP_func.MP_Func import *
 import Expr.Expr as expr
+import apt.apt as apt
 from shutil import *
 from psutil import *
 from sys import *
@@ -15,10 +17,9 @@ os.chdir(MP_PATH)
 
 while True:
     inputstr = input(f"WostoMP # {os.getcwd()} $ ")
-    inputstr = inputstr.lower()
     inputstr = inputstr.strip()
     inputs = inputstr.split(' ', 1)
-    command = inputs[0]
+    command = inputs[0].lower()
     if len(inputs) != 1:
         args = tuple(inputs[1].split(' '))
 
@@ -34,10 +35,12 @@ while True:
             print(info(3, readfile))
         except Exception:
             print(info(0))
+    # FIXME 无法删除，报错
     elif 'rm' == command:
         try:
             rmdata = args[0]
-            sure("remove(rmdata)")
+            if sure():
+                os.remove(rmdata)
         except FileNotFoundError:
             print(info(3, rmdata))
         except Exception:
@@ -47,7 +50,8 @@ while True:
     elif 'rmdir' == command:
         try:
             rmdir = args[0]
-            sure('rmtree(rmdir)')
+            if sure():
+                os.rmdir(rmdir)
         except FileNotFoundError:
             print(info(3, rmdir))
         except Exception:
@@ -124,20 +128,22 @@ while True:
             else:
                 print(process.name() + (20 - len(process.name())) * ' ' + f"{Black.BLUE}|{Style.NORMAL}", end='')
             print(str(process.pid) + (5 - len(str(process.pid))) * ' ' + f'{Black.BLUE}|{Style.NORMAL}', end='')
-            print(str(round(process.memory_percent(), 2))
-                    (10 - len(str(round(process.memory_percent(), 2)))) * ' ' + f' %{Black.BLUE}|{Style.NORMAL}')
+            print(str(round(process.memory_percent(), 2)) +
+                  (10 - len(str(round(process.memory_percent(), 2)))) * ' ' + f' %{Black.BLUE}|{Style.NORMAL}')
     elif 'taskkill' == command:
         try:
-            if '/pid' == args[0]:
+            if '-pid' == args[0]:
                 hasp = 1
             else:
                 hasp = 0
             processes = process_iter()
             for process in processes:
                 if hasp == 1 and process.pid == args[hasp]:
-                    sure('process.kill()')
+                    if sure():
+                        process.kill()
                 if process.name() == args[hasp]:
-                    sure('process.kill()')
+                    if sure():
+                        process.kill()
         except Exception:
             print(info(0))
     elif 'md' == command or 'mkdir' == command:
@@ -155,28 +161,40 @@ while True:
             print(args[0])
         except Exception:
             print(info(0))
+    elif 'apt' == command:
+        apt_get = apt.Apt()
+        try:
+            if args[0] == 'update':
+                apt_get.update()
+            elif args[0] == 'list':
+                apt_get.output_list()
+            elif args[0] == 'start':
+                program_status = apt_get.start_program(args[1])
+                if not program_status:
+                    print(info(0))
+        except:
+            print(info(0))
     elif 'help' == command:
         try:
-            # FIXME 无法启动 Help
-            if "-en" == command:
-                with open(f"{__file__}/help/help.dat", 'r') as help_en:
+            if "-en" == args[0]:
+                with open(f"{MP_PATH}\\help\\help.dat", 'r') as help_en:
                     data = help_en.read()
                 print(data)
-            elif "-zh" == command:
-                with open(f"{__file__}/help/help-zh.dat", 'r', encoding="utf-8") as help_zh:
+            elif "-zh" == args[0]:
+                with open(f"{MP_PATH}\\help\\help-zh.dat", 'r', encoding="utf-8") as help_zh:
                     data = help_zh.read()
                 print(data)
-            elif "-fr" == command:
-                with open(f"{__file__}/help/help-fr.dat", 'r', encoding="utf-8") as help_fr:
+            elif "-fr" == args[0]:
+                with open(f"{MP_PATH}\\help\\help-fr.dat", 'r', encoding="utf-8") as help_fr:
                     data = help_fr.read()
                 print(data)
-            elif "-jp" == command:
-                with open(f"{__file__}/help/help-jp.dat", 'r', encoding="utf-8") as help_jp:
+            elif "-jp" == args[0]:
+                with open(f"{MP_PATH}\\help\\help-jp.dat", 'r', encoding="utf-8") as help_jp:
                     data = help_jp.read()
                 print(data)
         except Exception:
             try:
-                with open(f"{__file__}/help/help.dat", 'r') as help_en:
+                with open(f"{MP_PATH}\\help\\help.dat", 'r') as help_en:
                     data = help_en.read()
                 print(data)
             except Exception:
@@ -184,9 +202,9 @@ while True:
     else:
         try:
             if command + '.exe' in os.listdir("App"):
-                os.popen(command + '.exe')
+                os.system(command + '.exe')
             elif command + '.bat' in os.listdir("App"):
-                os.popen(command + '.bat')
+                os.system(command + '.bat')
             else:
                 print(f'{Black.BOLD_RED}"{command}" is neither a command or an applications.{Style.NORMAL}')
         except FileNotFoundError:

@@ -4,6 +4,7 @@ Create on Mon Mar 11 19:32:25 2024
 @author: fangg
 """
 import MP_func.MP_Func as func
+import os
 import random
 
 class MPVim:
@@ -14,7 +15,7 @@ class MPVim:
         self.insert_mode = False
 
     def start(self):
-        with open("Welcome.dat", "r") as welcome:
+        with open(os.path.dirname(__file__) + "\\Welcome.dat", "r") as welcome:
             readlines = welcome.readlines()
             for line in range(6):
                 print(readlines[line], end='')
@@ -31,7 +32,6 @@ class MPVim:
             prefix = ": " if i == self.current_line else "   "
             print(f"{prefix}{line}")
 
-# TODO 需要添加更多功能
     def execute_command(self, command):
         if "i" in command:
             self.insert_mode = True

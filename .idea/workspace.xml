@@ -4,24 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2737f97d-c0d0-460f-a5d1-7a10215eeed6" name="更改" comment="NewBrekono-2(3m12d2b)">
-      <change afterPath="$PROJECT_DIR$/apt/Packages/MPVim_Apt/AptInfo.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apt/Packages/MPVim_Apt/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apt/apt.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hhh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="2737f97d-c0d0-460f-a5d1-7a10215eeed6" name="更改" comment="NewBrekono-3(3m23d3b)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Expr_APP/Expr.py" beforeDir="false" afterPath="$PROJECT_DIR$/Expr/Expr.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Expr_APP/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Expr/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Expr_APP/help_Expr/help_Expr-fr.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Expr/help_Expr/help_Expr-fr.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Expr_APP/help_Expr/help_Expr-jp.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Expr/help_Expr/help_Expr-jp.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Expr_APP/help_Expr/help_Expr-zh.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Expr/help_Expr/help_Expr-zh.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Expr_APP/help_Expr/help_Expr.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Expr/help_Expr/help_Expr.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPVim_APP/MPVim.py" beforeDir="false" afterPath="$PROJECT_DIR$/apt/Packages/MPVim_Apt/MPVim.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPVim_APP/Welcome.dat" beforeDir="false" afterPath="$PROJECT_DIR$/apt/Packages/MPVim_Apt/Welcome.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MPVim_APP/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apt/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MP_func/MP_Func.py" beforeDir="false" afterPath="$PROJECT_DIR$/MP_func/MP_Func.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wosto_2_MP.py" beforeDir="false" afterPath="$PROJECT_DIR$/Wosto_2_MP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apt/apt.py" beforeDir="false" afterPath="$PROJECT_DIR$/apt/apt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hhh" beforeDir="false" afterPath="$PROJECT_DIR$/Expr/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,40 +61,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Batch.Start.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Expr.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Init.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MPVim.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MP_Func.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MayDOS_Functions.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MayDOS_System.executor&quot;: &quot;Run&quot;,
-    &quot;Python.QLCDNumber.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Wosto_2_MP.executor&quot;: &quot;Run&quot;,
-    &quot;Python.apt.executor&quot;: &quot;Run&quot;,
-    &quot;Python.math.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Wosto_MP/Wosto_MP/Wosto_2_MP&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;fileTemplates&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Batch.Start.executor": "Run",
+    "Python.Expr.executor": "Run",
+    "Python.Init.executor": "Run",
+    "Python.MPVim.executor": "Run",
+    "Python.MP_Func.executor": "Run",
+    "Python.MayDOS_Functions.executor": "Run",
+    "Python.MayDOS_System.executor": "Run",
+    "Python.QLCDNumber.executor": "Run",
+    "Python.Wosto_2_MP.executor": "Run",
+    "Python.apt.executor": "Run",
+    "Python.math.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "full.screen.before.presentation.mode": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "G:/Keep Talking Nobody Explodes",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Wosto_MP\Wosto_MP\Wosto_2_MP\apt\Packages" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Wosto_MP\Wosto_MP\Wosto_2_MP\apt\Packages\MPVim_Apt" />
       <recent name="D:\Wosto MP\Wosto MP\Wosto_2_MP\Expr_APP" />
@@ -205,7 +196,12 @@
       <workItem from="1710840202235" duration="1359000" />
       <workItem from="1710928655974" duration="3243000" />
       <workItem from="1711103810828" duration="933000" />
-      <workItem from="1711151064124" duration="452000" />
+      <workItem from="1711151064124" duration="646000" />
+      <workItem from="1711164254861" duration="546000" />
+      <workItem from="1711171882438" duration="594000" />
+      <workItem from="1711172487969" duration="400000" />
+      <workItem from="1711176344280" duration="19000" />
+      <workItem from="1711177634445" duration="245000" />
     </task>
     <task id="LOCAL-00001" summary="Wosto 2 MPEdition 0.1(Brekono)">
       <option name="closed" value="true" />
@@ -263,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710245078791</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="NewBrekono-3(3m23d3b)">
+      <option name="closed" value="true" />
+      <created>1711151656457</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711151656457</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,17 +291,18 @@
     <MESSAGE value="NewBrekono-2r(3m12d2br)" />
     <MESSAGE value="NewBrekono-2(3m12d2br)" />
     <MESSAGE value="NewBrekono-2(3m12d2b)" />
-    <option name="LAST_COMMIT_MESSAGE" value="NewBrekono-2(3m12d2b)" />
+    <MESSAGE value="NewBrekono-3(3m23d3b)" />
+    <option name="LAST_COMMIT_MESSAGE" value="NewBrekono-3(3m23d3b)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Wosto_2_MP$Expr.coverage" NAME="Expr 覆盖结果" MODIFIED="1709124274172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Expr_APP" />
-    <SUITE FILE_PATH="coverage/Wosto_2_MP$MP_Func.coverage" NAME="MP_Func 覆盖结果" MODIFIED="1708932694387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MP_func" />
-    <SUITE FILE_PATH="coverage/Wosto_2_MP$apt.coverage" NAME="apt 覆盖结果" MODIFIED="1711151080828" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apt" />
+    <SUITE FILE_PATH="coverage/Wosto_2_MP$MP_Func.coverage" NAME="MP_Func 覆盖结果" MODIFIED="1711172354363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MP_func" />
+    <SUITE FILE_PATH="coverage/Wosto_2_MP$apt.coverage" NAME="apt 覆盖结果" MODIFIED="1711172857893" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apt" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$MayDOS_Functions.coverage" NAME="MayDOS_Functions 覆盖结果" MODIFIED="1709885322326" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Download/MayDOS_v0.7.0_1/MayDOS_v0.7.0/important/Applications" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$QLCDNumber.coverage" NAME="QLCDNumber 覆盖结果" MODIFIED="1709039842934" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="G:/My_Python_Model/!-QLCDNumber" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$MayDOS_System.coverage" NAME="MayDOS_System 覆盖结果" MODIFIED="1710156265844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../Download/MayDOS_v0.7.0_1/MayDOS_v0.7.0" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$math.coverage" NAME="math 覆盖结果" MODIFIED="1708832705896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/expr_package" />
-    <SUITE FILE_PATH="coverage/Wosto_2_MP$Wosto_2_MP.coverage" NAME="Wosto_2_MP 覆盖结果" MODIFIED="1711151315104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Wosto_2_MP$Wosto_2_MP.coverage" NAME="Wosto_2_MP 覆盖结果" MODIFIED="1711172363113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$Init.coverage" NAME="Init 覆盖结果" MODIFIED="1710934744444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apt/Packages/MPVim_Apt" />
     <SUITE FILE_PATH="coverage/Wosto_2_MP$MPVim.coverage" NAME="MPVim 覆盖结果" MODIFIED="1711104044198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/apt/Packages/MPVim_Apt" />
   </component>

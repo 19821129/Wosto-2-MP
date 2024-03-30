@@ -5,29 +5,26 @@ Create on Fri Mar 15 17:33:07 2024
 """
 import os
 import json
-from typing import List, Any
 
 import MP_func.MP_Func as func
-
-os.chdir(func.MP_PATH)
 
 
 class Apt:
 
     def __init__(self):
         self.apt_list = os.listdir(func.MP_PATH + "/apt/Packages")
-        self.infolist = []
+        self.info_list = []
         for package in self.apt_list:
             with open(func.MP_PATH + "\\apt\\Packages\\" + package + '\\AptInfo.json', 'r',
                       encoding="utf-8") as apt_info:
-                self.infolist.append(json.loads(apt_info.read()))
+                self.info_list.append(json.loads(apt_info.read()))
 
     def update(self) -> None:
-        self.infolist.clear()
+        self.info_list.clear()
         for package in self.apt_list:
             with open(func.MP_PATH + "\\apt\\Packages\\" + package + '\\AptInfo.json', 'r',
                       encoding="utf-8") as update_info:
-                self.infolist.append(json.loads(update_info.read()))
+                self.info_list.append(json.loads(update_info.read()))
 
     def output_list(self) -> None:
         print(f"=======Package Name======={func.Black.BLUE}|{func.Style.NORMAL}"
@@ -35,39 +32,40 @@ class Apt:
               f"=====Publisher====={func.Black.BLUE}|{func.Style.NORMAL}"
               f"===Version==={func.Black.BLUE}|{func.Style.NORMAL}"
               f"===Edition==={func.Black.BLUE}|{func.Style.NORMAL}")
-        for info in range(len(self.infolist)):
-            if len(self.infolist[info]['package_name']) > 26:
-                print(self.infolist[info]['package_name'][:24] + f"...{func.Black.BLUE}|{func.Style.NORMAL}", end="")
+        for info in range(len(self.info_list)):
+            if len(self.info_list[info]['package_name']) > 26:
+                print(self.info_list[info]['package_name'][:23] + f"...{func.Black.BLUE}|{func.Style.NORMAL}", end="")
             else:
-                print(self.infolist[info]['package_name'] + (" " * (26 - len(self.infolist[info]['package_name']))) +
+                print(self.info_list[info]['package_name'] + (" " * (26 - len(self.info_list[info]['package_name']))) +
                       f'{func.Black.BLUE}|{func.Style.NORMAL}', end="")
 
-            if len(self.infolist[info]['category']) > 16:
-                print(self.infolist[info]['category'][:14] + f"...{func.Black.BLUE}|{func.Style.NORMAL}", end="")
+            if len(self.info_list[info]['category']) > 16:
+                print(self.info_list[info]['category'][:13] + f"...{func.Black.BLUE}|{func.Style.NORMAL}", end="")
             else:
-                print(self.infolist[info]['category'] + (" " * (16 - len(self.infolist[info]['category']))) +
+                print(self.info_list[info]['category'] + (" " * (16 - len(self.info_list[info]['category']))) +
                       f'{func.Black.BLUE}|{func.Style.NORMAL}', end="")
 
-            if len(self.infolist[info]['publisher']) > 19:
-                print(self.infolist[info]['publisher'][:17] + f"...{func.Black.BLUE}|{func.Style.NORMAL}", end="")
+            if len(self.info_list[info]['publisher']) > 19:
+                print(self.info_list[info]['publisher'][:16] + f"...{func.Black.BLUE}|{func.Style.NORMAL}", end="")
             else:
-                print(self.infolist[info]['publisher'] + (" " * (19 - len(self.infolist[info]['publisher']))) +
+                print(self.info_list[info]['publisher'] + (" " * (19 - len(self.info_list[info]['publisher']))) +
                       f'{func.Black.BLUE}|{func.Style.NORMAL}', end="")
 
-            if len(self.infolist[info]['version']) > 13:
-                print(self.infolist[info]['version'][:11] + f"...{func.Black.BLUE}|{func.Style.NORMAL}", end="")
+            if len(self.info_list[info]['version']) > 13:
+                print(self.info_list[info]['version'][:10] + f"...{func.Black.BLUE}|{func.Style.NORMAL}", end="")
             else:
-                print(self.infolist[info]['version'] + (" " * (13 - len(self.infolist[info]['version']))) +
+                print(self.info_list[info]['version'] + (" " * (13 - len(self.info_list[info]['version']))) +
                       f'{func.Black.BLUE}|{func.Style.NORMAL}', end="")
 
-            if len(self.infolist[info]['edition']) > 13:
-                print(self.infolist[info]['edition'][:11] + f"...{func.Black.BLUE}|{func.Style.NORMAL}", end="")
+            if len(self.info_list[info]['edition']) > 13:
+                print(self.info_list[info]['edition'][:10] + f"...{func.Black.BLUE}|{func.Style.NORMAL}")
             else:
-                print(self.infolist[info]['edition'] + (" " * (13 - len(self.infolist[info]['edition']))) +
-                      f'{func.Black.BLUE}|{func.Style.NORMAL}', end="")
-
-apt_get = Apt()
-apt_get.update()
-apt_get.output_list()
-print(apt_get.apt_list)
-print(apt_get.infolist)
+                print(self.info_list[info]['edition'] + (" " * (13 - len(self.info_list[info]['edition']))) +
+                      f'{func.Black.BLUE}|{func.Style.NORMAL}')
+    def start_program(self, programs_name: str) -> bool:
+        if programs_name + "_Apt" in self.apt_list:
+            os.system("python " + os.path.dirname(__file__) + "\\Packages\\" +
+                      programs_name + "_Apt\\" + programs_name + ".py")
+            return True
+        else:
+            return False
